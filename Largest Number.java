@@ -1,4 +1,4 @@
-class Solution {
+class Solution{
     public String largestNumber(int[] nums) {
         String[] arr=new String[nums.length];
         boolean flag=true;
