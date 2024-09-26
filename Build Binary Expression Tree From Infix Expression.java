@@ -11,7 +11,29 @@ class Node{
         this.val=val;
     }
 }
+
 public class Build_Binary_Expression_Tree_From_Infix_Expression {
+
+    public Node expTree(String s){
+        s=getPostfix(s);
+        Stack<Node>st=new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char ch=s.charAt(i);
+            if(ch>='0' && ch<='9'){
+                st.push(new Node(ch));
+            }
+            else{
+                Node right=st.pop();
+                Node left=st.pop();
+                Node nn=new Node(ch);
+                nn.left=left;
+                nn.right=right;
+                st.push(nn);
+            }
+        }
+        return st.peek();
+
+    }
 
         public String getPostfix(String s){
             StringBuilder sb=new StringBuilder();
